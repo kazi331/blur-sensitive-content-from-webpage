@@ -9,13 +9,16 @@ A simple and minimal chrome extension that helps you to blur your sensitive cont
 ### Clone or Download
 
 - **Clone**:
+  <br>
   Run this command
 
-```git clone https://github.com/kazi331/blur-sensitive-content-from-webpage.git
+```
+    git clone https://github.com/kazi331/blur-sensitive-content-from-webpage.git
 
 ```
 
 - **Download**:
+  <br>
   Click "Code" > "Download ZIP" > Extract the Folder.
 
 ### Load in Chrome
