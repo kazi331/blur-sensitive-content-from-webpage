@@ -1,6 +1,6 @@
 # Blur Sensitive Content Chrome Extension
 
-A simple Chrome extension to blur/hide sensitive content on webpages during screen sharing or recording.
+A simple and minimal chrome extension that helps you to blur your sensitive contents in your webpage, works in Google Chrome and Chromium based browsers.
 
 ![Toolbar](screenshot.png)
 
@@ -8,15 +8,25 @@ A simple Chrome extension to blur/hide sensitive content on webpages during scre
 
 ### Clone or Download
 
-- **Clone**: Run `git clone https://github.com/kazi331/blur-sensitive-content-from-webpage.git`
-- **Download**: Click "Code" > "Download ZIP", then extract it.
+- **Clone**:
+  <br>
+  Run this command
+
+```
+    git clone https://github.com/kazi331/blur-sensitive-content-from-webpage.git
+```
+
+- **Download**:
+  <br>
+  Click "Code" > "Download ZIP" > Extract the Folder.
 
 ### Load in Chrome
 
 1. Open Chrome and go to `chrome://extensions/`.
-2. Enable "Developer mode" (top right toggle).
+2. Enable `Developer mode` (at the top right corner).
 3. Click "Load unpacked" and select the `blur-sensitive-content-from-webpage` folder.
 4. The extension icon will appear in the toolbar.
+5. Reload your webpage.
 
 ## Usage
 
