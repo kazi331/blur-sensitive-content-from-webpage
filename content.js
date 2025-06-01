@@ -9,10 +9,11 @@ toolbar.id = "blur-extension-toolbar";
 toolbar.style.display = "none"; // Initially hidden
 toolbar.innerHTML = `
   <div class="blur-toolbar">
-    <button id="toggle-blur">Enable Blurring</button>
-    <label>Blur Intensity: <input type="range" id="blur-slider" min="0" max="20" value="${blurIntensity}"></label>
-    <button id="clear-blur">Clear All Blurs</button>
-    <span id="blur-status">Blurring: ${isBlurringEnabled ? "ON" : "OFF"}</span>
+    <button id="toggle-blur" title="${
+      isBlurringEnabled ? "Disable Blurring" : "Enable Blurring"
+    }">👁️</button>
+    <label title="Blur Intensity"><input type="range" id="blur-slider" min="0" max="20" value="${blurIntensity}"></label>
+    <button id="clear-blur" title="Clear All Blurs">🧹</button>
   </div>
 `;
 document.body.appendChild(toolbar);
@@ -21,12 +22,12 @@ document.body.appendChild(toolbar);
 const style = document.createElement("style");
 style.textContent = `
   .blur-highlight {
-    outline: 2px solid #ff6b6b !important;
-    background-color: rgba(255, 107, 107, 0.2) !important;
+    outline: 1px solid #ff6b6b !important;
+    background-color: rgba(255, 107, 107, 0.1) !important;
+    border-radius: 4px !important;
     cursor: pointer;
   }
   .blur-applied {
-    filter: blur(${blurIntensity}px) !important;
     transition: filter 0.3s ease;
   }
 `;
@@ -35,12 +36,11 @@ document.head.appendChild(style);
 // Event listeners for toolbar
 document.getElementById("toggle-blur").addEventListener("click", () => {
   isBlurringEnabled = !isBlurringEnabled;
-  document.getElementById("blur-status").textContent = `Blurring: ${
-    isBlurringEnabled ? "ON" : "OFF"
-  }`;
-  document.getElementById("toggle-blur").textContent = isBlurringEnabled
+  const toggleButton = document.getElementById("toggle-blur");
+  toggleButton.title = isBlurringEnabled
     ? "Disable Blurring"
     : "Enable Blurring";
+  toggleButton.className = isBlurringEnabled ? "enabled" : "disabled";
   chrome.storage.local.set({ blurringEnabled: isBlurringEnabled });
   if (!isBlurringEnabled && currentHover) {
     currentHover.classList.remove("blur-highlight");
@@ -108,12 +108,11 @@ document.addEventListener("click", handleClick);
 chrome.storage.local.get(["blurringEnabled", "toolbarVisible"], (result) => {
   isBlurringEnabled = result.blurringEnabled || false;
   isToolbarVisible = result.toolbarVisible || false;
-  document.getElementById("blur-status").textContent = `Blurring: ${
-    isBlurringEnabled ? "ON" : "OFF"
-  }`;
-  document.getElementById("toggle-blur").textContent = isBlurringEnabled
+  const toggleButton = document.getElementById("toggle-blur");
+  toggleButton.title = isBlurringEnabled
     ? "Disable Blurring"
     : "Enable Blurring";
+  toggleButton.className = isBlurringEnabled ? "enabled" : "disabled";
   toolbar.style.display = isToolbarVisible ? "block" : "none";
 });
 
