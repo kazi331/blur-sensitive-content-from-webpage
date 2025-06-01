@@ -77,24 +77,24 @@ function handlePageEvent(e) {
     // Prevent default behavior and stop propagation for all other elements
     e.preventDefault();
     e.stopPropagation();
-    
+
     // For mouseover events, handle highlighting
-    if (e.type === 'mouseover') {
+    if (e.type === "mouseover") {
       if (currentHover) currentHover.classList.remove("blur-highlight");
       currentHover = e.target;
       currentHover.classList.add("blur-highlight");
     }
-    
+
     // For mouseout events, remove highlighting
-    else if (e.type === 'mouseout') {
+    else if (e.type === "mouseout") {
       if (currentHover) {
         currentHover.classList.remove("blur-highlight");
         currentHover = null;
       }
     }
-    
+
     // For click events, toggle blur
-    else if (e.type === 'click') {
+    else if (e.type === "click") {
       if (blurredElements.has(e.target)) {
         e.target.classList.remove("blur-applied");
         e.target.style.filter = "";
