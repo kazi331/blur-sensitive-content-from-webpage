@@ -12,7 +12,7 @@ toolbar.innerHTML = `
     <button id="toggle-blur" title="${
       isBlurringEnabled ? "Disable Blurring" : "Enable Blurring"
     }">👁️</button>
-    <label title="Blur Intensity"><input type="range" id="blur-slider" min="0" max="20" value="${blurIntensity}"></label>
+    <label title="Blur Intensity" style="height:27px"><input type="range" id="blur-slider" min="0" max="20" value="${blurIntensity}"></label>
     <button id="clear-blur" title="Clear All Blurs">🧹</button>
   </div>
 `;

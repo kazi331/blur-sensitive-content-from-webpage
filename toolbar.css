@@ -39,7 +39,7 @@
     height: 4px;
     accent-color: #4ecca3;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(220, 220, 220, 1);
     border-radius: 2px;
     -webkit-appearance: none;
   }
@@ -79,10 +79,10 @@
     background: rgba(255, 255, 255, 0.15);
   }
   
-  .blur-toolbar button:hover {
+  /* .blur-toolbar button:hover {
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.25);
-  }
+  } */
   
   .blur-toolbar button.enabled:hover {
     background: #4ecca3;
