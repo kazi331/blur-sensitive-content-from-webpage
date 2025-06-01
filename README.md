@@ -2,6 +2,8 @@
 
 A simple Chrome extension to blur/hide sensitive content on webpages during screen sharing or recording.
 
+![Toolbar](screenshot.png)
+
 ## Installation
 
 ### Clone or Download
