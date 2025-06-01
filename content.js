@@ -66,6 +66,48 @@ document.getElementById("clear-blur").addEventListener("click", () => {
 // Hover and click handling
 let currentHover = null;
 
+// Function to handle all page events when blurring is active
+function handlePageEvent(e) {
+  // If blurring is enabled and toolbar is visible
+  if (isBlurringEnabled && isToolbarVisible) {
+    // Allow events on the toolbar
+    if (e.target === toolbar || toolbar.contains(e.target)) {
+      return;
+    }
+    // Prevent default behavior and stop propagation for all other elements
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // For mouseover events, handle highlighting
+    if (e.type === 'mouseover') {
+      if (currentHover) currentHover.classList.remove("blur-highlight");
+      currentHover = e.target;
+      currentHover.classList.add("blur-highlight");
+    }
+    
+    // For mouseout events, remove highlighting
+    else if (e.type === 'mouseout') {
+      if (currentHover) {
+        currentHover.classList.remove("blur-highlight");
+        currentHover = null;
+      }
+    }
+    
+    // For click events, toggle blur
+    else if (e.type === 'click') {
+      if (blurredElements.has(e.target)) {
+        e.target.classList.remove("blur-applied");
+        e.target.style.filter = "";
+        blurredElements.delete(e.target);
+      } else {
+        e.target.classList.add("blur-applied");
+        e.target.style.filter = `blur(${blurIntensity}px)`;
+        blurredElements.add(e.target);
+      }
+    }
+  }
+}
+
 function handleMouseOver(e) {
   if (!isBlurringEnabled || !isToolbarVisible) return;
   const target = e.target;
@@ -99,10 +141,17 @@ function handleClick(e) {
   }
 }
 
-// Add event listeners to the document
-document.addEventListener("mouseover", handleMouseOver);
-document.addEventListener("mouseout", handleMouseOut);
-document.addEventListener("click", handleClick);
+// Add event listeners to the document with capture phase to intercept events before they reach their targets
+document.addEventListener("mouseover", handlePageEvent, true);
+document.addEventListener("mouseout", handlePageEvent, true);
+document.addEventListener("click", handlePageEvent, true);
+document.addEventListener("mousedown", handlePageEvent, true);
+document.addEventListener("mouseup", handlePageEvent, true);
+document.addEventListener("contextmenu", handlePageEvent, true);
+document.addEventListener("dblclick", handlePageEvent, true);
+document.addEventListener("touchstart", handlePageEvent, true);
+document.addEventListener("touchend", handlePageEvent, true);
+document.addEventListener("touchmove", handlePageEvent, true);
 
 // Load saved state
 chrome.storage.local.get(["blurringEnabled", "toolbarVisible"], (result) => {
