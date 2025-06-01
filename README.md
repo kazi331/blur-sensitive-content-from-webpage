@@ -1,4 +1,4 @@
-# Blur Sensitive Data Chrome Extension
+# Blur Sensitive Content Chrome Extension
 
 A simple Chrome extension to blur sensitive content on webpages.
 
