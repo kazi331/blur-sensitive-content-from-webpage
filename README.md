@@ -2,7 +2,17 @@
 
 A simple and minimal chrome extension that helps you to blur your sensitive contents in your webpage, works in Google Chrome and Chromium based browsers.
 
-![Toolbar](screenshot.png)
+## Preview & Demo Video
+<img  src="https://raw.githubusercontent.com/shell-ninja/Screen-Shots/refs/heads/main/Extension/screenshot.png"/>
+
+### Installation
+
+https://github.com/user-attachments/assets/24060637-f354-4012-a825-ed14e81886c9
+
+### USage
+
+https://github.com/user-attachments/assets/6668b0de-6d77-428b-9972-87b253e886a6
+
 
 ## Installation
 
